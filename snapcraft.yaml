@@ -28,7 +28,7 @@ parts:
       - -Dbuildtype=release
       - -Dgtest=false
       - -Dblas=false
-      - -Dpencl=false
+      - -Dopencl=false
     build-packages:
       - gcc-8
       - g++-8
@@ -37,7 +37,6 @@ parts:
     stage-packages:
       - libcudart9.1
       - libcublas9.1
-      - ocl-icd-libopencl1
     build-environment:
       - CC: "gcc-8"
       - CXX: "g++-8"
