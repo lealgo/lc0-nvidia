@@ -34,7 +34,8 @@ parts:
       - g++-8
       - libstdc++-8-dev
       - nvidia-cuda-toolkit
-#    stage-packages:
+    stage-packages:
+      - libcudart9.1
     build-environment:
       - CC: "gcc-8"
       - CXX: "g++-8"
