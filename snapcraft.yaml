@@ -36,6 +36,8 @@ parts:
       - nvidia-cuda-toolkit
     stage-packages:
       - libcudart9.1
+      - libcublas9.1
+      - ocl-icd-libopencl1
     build-environment:
       - CC: "gcc-8"
       - CXX: "g++-8"
