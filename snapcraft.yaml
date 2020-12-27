@@ -17,12 +17,12 @@ architectures:
 
 apps:
   lc0:
-    command: bin/lc0
+    command: bin/lc0-cuda91
     plugs:
       - home
 
 parts:
-  meson-project:
+  cuda91:
     plugin: meson
     meson-parameters:
       - -Dbuildtype=release
@@ -43,6 +43,7 @@ parts:
     override-build: |
       pip3 install --upgrade meson==0.55.3
       snapcraftctl build
+      mv $SNAPCRAFT_PART_INSTALL/lc0 $SNAPCRAFT_PART_INSTALL/lc0-cuda91
     source: https://github.com/LeelaChessZero/lc0.git
     source-type: git
     source-depth: 1
