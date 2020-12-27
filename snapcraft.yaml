@@ -43,7 +43,7 @@ parts:
     override-build: |
       pip3 install --upgrade meson==0.55.3
       snapcraftctl build
-      mv $SNAPCRAFT_PART_INSTALL/lc0 $SNAPCRAFT_PART_INSTALL/lc0-cuda91
+      mv $SNAPCRAFT_PART_INSTALL/usr/local/bin/lc0 $SNAPCRAFT_PART_INSTALL/usr/local/bin/lc0-cuda91
     source: https://github.com/LeelaChessZero/lc0.git
     source-type: git
     source-depth: 1
