@@ -59,6 +59,7 @@ parts:
       - -Dbuildtype=release
       - -Dgtest=false
       - -Dopencl=false
+      - -Dplain_cuda=false
     build-packages:
       - gcc-8
       - g++-8
