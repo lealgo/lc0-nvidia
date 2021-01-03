@@ -26,9 +26,30 @@ apps:
       - home
 
 parts:
+  blas:
+    plugin: meson
+    meson-parameters:
+      - -Dbuildtype=release
+      - -Dgtest=false
+      - -Dopencl=false
+      - -Dplain_cuda=false
+    build-packages:
+      - gcc-8
+      - g++-8
+      - libstdc++-8-dev
+    build-environment:
+      - CC: "gcc-8"
+      - CXX: "g++-8"
+    override-build: |
+      pip3 install --upgrade meson==0.55.3
+      snapcraftctl build
+      mv $SNAPCRAFT_PART_INSTALL/usr/local/bin/lc0 $SNAPCRAFT_PART_INSTALL/usr/local/bin/lc0-blas
+    source: https://github.com/LeelaChessZero/lc0.git
+    source-type: git
+    source-depth: 1
+    source-tag: 'v0.26.3'
+
   cuda91:
-    after:
-      - blas
     plugin: meson
     meson-parameters:
       - -Dbuildtype=release
@@ -50,29 +71,6 @@ parts:
       pip3 install --upgrade meson==0.55.3
       snapcraftctl build
       mv $SNAPCRAFT_PART_INSTALL/usr/local/bin/lc0 $SNAPCRAFT_PART_INSTALL/usr/local/bin/lc0-cuda91
-    source: https://github.com/LeelaChessZero/lc0.git
-    source-type: git
-    source-depth: 1
-    source-tag: 'v0.26.3'
-
-  blas:
-    plugin: meson
-    meson-parameters:
-      - -Dbuildtype=release
-      - -Dgtest=false
-      - -Dopencl=false
-      - -Dplain_cuda=false
-    build-packages:
-      - gcc-8
-      - g++-8
-      - libstdc++-8-dev
-    build-environment:
-      - CC: "gcc-8"
-      - CXX: "g++-8"
-    override-build: |
-      pip3 install --upgrade meson==0.55.3
-      snapcraftctl build
-      mv $SNAPCRAFT_PART_INSTALL/usr/local/bin/lc0 $SNAPCRAFT_PART_INSTALL/usr/local/bin/lc0-blas
     source: https://github.com/LeelaChessZero/lc0.git
     source-type: git
     source-depth: 1
