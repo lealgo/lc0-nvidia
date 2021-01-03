@@ -27,6 +27,8 @@ apps:
 
 parts:
   cuda91:
+    after:
+      - blas
     plugin: meson
     meson-parameters:
       - -Dbuildtype=release
